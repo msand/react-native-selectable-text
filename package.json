@@ -1,0 +1,18 @@
+
+{
+  "name": "react-native-selectable-text",
+  "version": "1.0.0",
+  "description": "allow selecting text and responding to selection changes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "msand@abo.fi",
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native": "*"
+  }
+}
