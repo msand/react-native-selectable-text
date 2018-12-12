@@ -1,6 +1,6 @@
 {
   "name": "react-native-selectable-text",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "allow selecting text and responding to selection changes",
   "main": "index.js",
   "scripts": {
