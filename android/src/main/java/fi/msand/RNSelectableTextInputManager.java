@@ -1,6 +1,7 @@
 
 package fi.msand;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Rect;
 import android.text.InputType;
@@ -18,7 +19,7 @@ import com.facebook.react.views.textinput.ReactEditText;
 import com.facebook.react.views.textinput.ReactTextInputManager;
 
 public class RNSelectableTextInputManager extends ReactTextInputManager {
-    public static final String REACT_CLASS = "RNSelectableTextInput";
+    private static final String REACT_CLASS = "RNSelectableTextInput";
 
     @Override
     public String getName() {
@@ -39,6 +40,7 @@ public class RNSelectableTextInputManager extends ReactTextInputManager {
         @Override
         protected void onCreateContextMenu(ContextMenu menu) {}
 
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouchEvent(MotionEvent ev) {
             boolean result = super.onTouchEvent(ev);

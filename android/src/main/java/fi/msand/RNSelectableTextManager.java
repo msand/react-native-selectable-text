@@ -18,7 +18,7 @@ import com.facebook.react.views.text.ReactTextViewManager;
 import javax.annotation.Nullable;
 
 public class RNSelectableTextManager extends ReactTextViewManager {
-    public static final String REACT_CLASS = "RCTMultilineTextInputView";
+    private static final String REACT_CLASS = "RCTMultilineTextInputView";
 
     @Override
     public String getName() {
@@ -37,6 +37,7 @@ public class RNSelectableTextManager extends ReactTextViewManager {
         @Override
         protected void onCreateContextMenu(ContextMenu menu) {}
 
+        @SuppressWarnings("unused")
         public void setSelection(int start, int end) {
             CharSequence chars = getText();
             SpannableString str = new SpannableString(chars);
@@ -69,7 +70,8 @@ public class RNSelectableTextManager extends ReactTextViewManager {
         return new CustomText(context);
     }
 
-    @ReactProp(name = "onSelectionChange", defaultBoolean = false)
+    @SuppressWarnings("unused")
+    @ReactProp(name = "onSelectionChange")
     public void setOnSelectionChange(final CustomText view, boolean onSelectionChange) {
         if (onSelectionChange) {
             view.setSelectionWatcher(new ReactSelectionWatcher(view));
@@ -79,7 +81,7 @@ public class RNSelectableTextManager extends ReactTextViewManager {
     }
 
     interface SelectionWatcher {
-        public void onSelectionChanged(int start, int end);
+        void onSelectionChanged(int start, int end);
     }
 
     private class ReactSelectionWatcher implements SelectionWatcher {
@@ -89,7 +91,7 @@ public class RNSelectableTextManager extends ReactTextViewManager {
         private int mPreviousSelectionStart;
         private int mPreviousSelectionEnd;
 
-        public ReactSelectionWatcher(CustomText editText) {
+        ReactSelectionWatcher(CustomText editText) {
             mReactEditText = editText;
             ReactContext reactContext = (ReactContext) editText.getContext();
             mEventDispatcher = reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher();
