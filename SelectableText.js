@@ -1,10 +1,19 @@
 import React from 'react';
-import { requireNativeComponent } from 'react-native';
+import { requireNativeComponent, Platform, Text } from 'react-native';
 
-const SelectableText = requireNativeComponent(
-  'RCTMultilineTextInputView',
-  SelectableTextView,
-);
+let SelectableText;
+if (Platform.OS === 'ios') {
+  SelectableText = requireNativeComponent(
+    'SelectableText',
+    SelectableTextView,
+  );
+} else {
+  SelectableText = requireNativeComponent(
+    'RCTMultilineTextInputView',
+    SelectableTextView,
+  );
+}
+
 
 export default class SelectableTextView extends React.Component {
   render() {
@@ -14,13 +23,15 @@ export default class SelectableTextView extends React.Component {
         {...props}
         ref={props.forwardedRef}
         onSelectionChange={this._onSelectionChange}
+        text={props.children || props.value}
       >
-        {props.children || props.value}
+        <Text>{props.children || props.value}</Text>
       </SelectableText>
     );
   }
 
   _onSelectionChange = event => {
+    event.persist();
     this.props.onSelectionChange && this.props.onSelectionChange(event);
 
     if (!this._inputRef) {

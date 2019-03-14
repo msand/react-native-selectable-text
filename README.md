@@ -37,7 +37,6 @@ export default ({ text, onSelectionChange }) => (
   <SelectableText
     selectable
     multiline
-    contextMenuHidden
     scrollEnabled={false}
     editable={false}
     onSelectionChange={(event) => {

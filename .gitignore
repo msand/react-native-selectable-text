@@ -2,13 +2,13 @@
 # OSX
 #
 .DS_Store
-
+.history/
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
-  
+
 
 # Xcode
 #
